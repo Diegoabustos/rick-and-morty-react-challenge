@@ -1,10 +1,9 @@
-// Importa el servicio
-import { useEffect, useState } from 'react';
-import { getCharacters } from '../../services/characters';
-import CharacterInterface from '../../models/characters/characters.models';
+import { useEffect, useState } from "react";
+import { getCharacters } from "../../services/rickAndMortyService";
+import CharacterInterface from "../../models/characters/characters.models";
 
-import Character from '../Character/Character';
-
+import Character from "../Character/Character";
+import { Link } from "react-router-dom";
 
 const CharactersList: React.FC = () => {
   const [characters, setCharacters] = useState<CharacterInterface[]>([]);
@@ -16,7 +15,7 @@ const CharactersList: React.FC = () => {
         const data = await getCharacters();
         setCharacters(data);
       } catch (error) {
-        console.error('Error fetching characters:', error);
+        console.error("Error fetching characters:", error);
       }
     };
 
@@ -28,7 +27,11 @@ const CharactersList: React.FC = () => {
       <h2>Lista de Personajes de Rick and Morty</h2>
       <ul>
         {characters.map((character) => (
-          <Character key={character.id} name={character.name} image={character.image} />
+          <li key={character.id}>
+            <Link to={`/character/${character.id}`}>
+              <Character name={character.name} image={character.image} />
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

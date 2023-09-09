@@ -1,5 +1,4 @@
 export type CharacterType = {
-  key: number;
   name: string;
   image: string;
 };
