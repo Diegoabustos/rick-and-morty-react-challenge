@@ -1,29 +1,26 @@
 /* eslint-disable no-inner-declarations */
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
 import { getCharacterById } from '../../services/rickAndMortyService';
-import CharacterInterface from '../../models/characters/characters.models';
 
 function CharacterDetails() {
   const { id } = useParams();
-  const [character, setCharacter] = useState<CharacterInterface | null>(null);
+  const characterId = id ?? '';
 
-  useEffect(() => {
-      async function fetchCharacterDetails() {
-        try {
-          const characterData = await getCharacterById(parseInt(id, 10));
-          setCharacter(characterData);
-        } catch (error) {
-          console.error(error);
-        }
-      }
+  const { data: character, isLoading, isError } = useQuery(
+    ['character', id],
+    () => getCharacterById(parseInt(characterId, 10)),
+    {
+      enabled: id !== undefined && !isNaN(Number(id)), 
+    }
+  );
 
-      fetchCharacterDetails();
-    
-  }, [id]);
-
-  if (!character) {
+  if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  if (isError || !character) {
+    return <div>Error loading character details.</div>;
   }
 
 
