@@ -1,7 +1,9 @@
+import CharactersList from "./components/CharactersList/CharactersList"
 
 function App() {
+
   return (
-    <div>Rick and morty challenge</div>
+    <div><CharactersList /></div>
   )
 }
 
