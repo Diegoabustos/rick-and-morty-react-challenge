@@ -1,8 +1,12 @@
 /* eslint-disable no-inner-declarations */
+// libs
 import { useQuery } from '@tanstack/react-query';
-import { getCharacterById } from '../../services/rickAndMortyService';
-import { Loading } from '../../components/Loading/Loading';
 import { Link, useParams } from 'react-router-dom';
+// services
+import { getCharacterById } from '../../services/rickAndMortyService';
+// components
+import Loading from '../../components/Loading/Loading';
+// ui chakra components
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, Heading, Image, Tag, Text, VStack } from '@chakra-ui/react';
 import { COLORSCHEME_BY_CHARACTER_STATUS } from '../../constants';
 
@@ -30,7 +34,7 @@ const CharacterDetails: React.FC = () => {
 
   return (
     <>
-      <Breadcrumb>
+      <Breadcrumb marginTop={10}>
         <BreadcrumbItem>
           <BreadcrumbLink as={Link} to="/">
             Home

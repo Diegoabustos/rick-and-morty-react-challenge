@@ -27,7 +27,8 @@ const getCharacterById = async (id: number): Promise<Character> => {
     } else {
       throw new Error('Failed to fetch character details');
     }
-  } catch (error) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
     throw new Error('Error fetching character details: ' + error.message);
   }
 };

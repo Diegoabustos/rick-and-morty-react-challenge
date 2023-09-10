@@ -4,7 +4,7 @@ const darkTheme = {
   initialColorMode: "dark",
   useSystemColorMode: true,
   colors: {
-    background: "#242424;",
+    background: "#171923;",
     text: "#FFF",
     primary: {
       50: "#E3F2FD",

@@ -1,11 +1,11 @@
 // hooks
 import { useCharacter } from "./../../../../hooks/useCharacters";
 //  chakraui components
-import { GridItem, SimpleGrid } from "@chakra-ui/react";
+import { Box, GridItem, SimpleGrid } from "@chakra-ui/react";
 // components by use
 import CharacterCard from "./components/Character/CharacterCard";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Loading } from "../../../../components/Loading/Loading";
+import Loading from "../../../../components/Loading/Loading";
 import SearchInput from "./components/SearchInput/SearchInput";
 // models
 import { Character } from "../../../../models/characters/characters";
@@ -28,7 +28,9 @@ const CharactersList: React.FC = () => {
 
   return (
     <div>
-      <SearchInput />
+      <Box margin={10}>
+        <SearchInput />
+      </Box>
       <InfiniteScroll
         dataLength={characters ? characters.results.length : 0}
         next={() => fetchNextPage()}
