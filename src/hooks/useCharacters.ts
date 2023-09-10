@@ -17,6 +17,7 @@ export const useCharacter = () => {
         if (currentPage === lastPage.info.pages) return false;
         return currentPage + 1;
       },
+      staleTime: 6000
     }
   );
 
