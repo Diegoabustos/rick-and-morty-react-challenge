@@ -17,7 +17,11 @@ const getCharacterById = async (id: number): Promise<Character> => {
         id: characterData.id,
         name: characterData.name,
         species: characterData.species,
-        image: characterData.image
+        image: characterData.image,
+        gender: characterData.gender,
+        location: characterData.location,
+        status: characterData.status,
+        origin: characterData.origin
       };
       return character;
     } else {
