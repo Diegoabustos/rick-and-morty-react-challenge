@@ -1,9 +1,10 @@
 /* eslint-disable no-inner-declarations */
-import { useParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { getCharacterById } from '../../services/rickAndMortyService';
+import { Loading } from '../../components/Loading/Loading';
+import { useParams } from 'react-router-dom';
 
-function CharacterDetails() {
+const CharacterDetails: React.FC = () => {
   const { id } = useParams();
   const characterId = id ?? '';
 
@@ -16,7 +17,7 @@ function CharacterDetails() {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (isError || !character) {

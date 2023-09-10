@@ -1,27 +1,19 @@
 /* eslint-disable no-useless-catch */
 // import axios for fetch data from api
 import axios from 'axios';
+import { Character } from '../models/characters/characters';
 // import types from models
-import CharacterInterface from '../models/characters/characters.models';
 
 const BASE_URL = 'https://rickandmortyapi.com/api/';
 
-const getCharacters = async (): Promise<CharacterInterface[]> => {
-  try {
-    const response = await axios.get(`${BASE_URL}character`);
-    return response.data.results;
-  } catch (error) {
-    throw error;
-  }
-};
 
-const getCharacterById = async (id: number): Promise<CharacterInterface> => {
+const getCharacterById = async (id: number): Promise<Character> => {
   try {
     const response = await axios.get(`${BASE_URL}/character/${id}`);
     if (response.status === 200) {
       const characterData = response.data;
       // Map the fields we need 
-      const character: CharacterInterface = {
+      const character: Character = {
         id: characterData.id,
         name: characterData.name,
         species: characterData.species,
@@ -36,4 +28,4 @@ const getCharacterById = async (id: number): Promise<CharacterInterface> => {
   }
 };
 
-export { getCharacters, getCharacterById }
+export { getCharacterById }

@@ -1,18 +1,17 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import CharactersList from "./components/CharactersList/CharactersList"
-import CharacterDetails from './components/CharacterDetails/CharacterDetails'
+import * as C from "./components";
+import * as P from "./pages";
+import { Navigate, Routes, Route } from "react-router-dom";
 
 function App() {
-
   return (
-    <BrowserRouter>
-      <Routes>
-          <Route path="/" element={<CharactersList />} />
-          <Route path="/character/:id" element={<CharacterDetails />} />
-      </Routes>
-    
-    </BrowserRouter>
-  )
+    <Routes>
+      <Route element={<C.Layout />}>
+        <Route index element={<P.Home />} />
+        <Route path="/character/:id" element={<P.CharacterDetails />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
