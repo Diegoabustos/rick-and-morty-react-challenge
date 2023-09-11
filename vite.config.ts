@@ -3,7 +3,10 @@ import react from '@vitejs/plugin-react-swc'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "https://github.com/Diegoabustos/rick-and-morty-react-challenge/",
+  base: "https://diegoabustos.github.io/rick-and-morty-react-challenge/",
+  build: {
+    outDir: 'dist',
+  },
   plugins: [react()],
   server: {
     host: 'localhost',
