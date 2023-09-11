@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from 'react-router-dom';
 // services
-import { getCharacterById } from '../../services/rickAndMortyService';
+import { getCharacterById } from '../../services/getCharacterById';
 // components
 import Loading from '../../components/Loading/Loading';
 // ui chakra components

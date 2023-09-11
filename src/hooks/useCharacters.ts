@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { ResponseAPI } from "../models/interfaces";
-import { fetcher } from "../utils/getNextPage";
+import { fetcher } from "../services/getNextPage";
 
 export const useCharacter = () => {
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery(
